@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media (min-width: 768px) {
+            .custom {
+                box-shadow: 4px 4px 8px #ddc1a0,
+                -4px -4px 8px #f7e5cc;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="">
+    <div class="flex flex-wrap items-center justify-between py-4">
+        <div class="pl-9">
+            <h1 class="font-bold text-3xl text-gray-700">
+                Klinik App
+            </h1>
+        </div>
+        <div class="p-4 lg:hidden" id="menu-button">
+            <img class="w-7 h-7" src="/static_files/svgs5/bars.svg" alt="menu">
+        </div>
+        <div class="hidden w-screen px-5 transition-all duration-700 bg-gray-700 lg:rounded-l-full lg:w-2/3 lg:block"
+             id="menu">
+            <div class="w-full lg:w-auto">
+                <ul class="items-center justify-between text-lg text-center text-white md:flex">
+                    <li class="p-3 py-4 font-bold"><a href="/">Home</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/dokter">Dokter</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/pasien">Pasien</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/jadwal-praktek">Jadwal Praktek</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/pendaftaran">Pendaftaran</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/obat">Obat</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/rekam-medis">Rekam Medis</a></li>
+                    <div class="flex justify-center ">
+                        <div class="flex items-center m-1 bg-white rounded-xl">
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-xl w-full">
+        <a href="/dokter" class=" bg-black py-2 px-4 rounded text-white">Kembali</a>
+        <div class="flex justify-center mb-6">
+        </div>
+        <h2 class="text-2xl font-semibold text-center mb-4">Create Dokter</h2>
+        <form action="/dokter/store" method="post">
+            <div class="mb-4">
+                <label for="nama_dokter" class="block text-gray-700 text-sm font-semibold mb-2">Nama Dokter</label>
+                <input type="text" id="nama_dokter" name="nama_dokter" class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="spesialis" class="block text-gray-700 text-sm font-semibold mb-2">Spesialis</label>
+                <input type="text" id="spesialis" name="spesialis" class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="telephone" class="block text-gray-700 text-sm font-semibold mb-2">Telephone</label>
+                <input type="text" id="telephone" name="telephone" class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="harga" class="block text-gray-700 text-sm font-semibold mb-2">Harga</label>
+                <input type="text" id="harga" name="harga" class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="status" class="block text-gray-700 text-sm font-semibold mb-2">Status</label>
+                <input type="text" id="status" name="status" class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required>
+            </div>
+            <button type="submit" class="w-full bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Save</button>
+        </form>
+    </div>
+</div>
+<script>
+    var menu_link = document.querySelectorAll("li");
+    for (i = 0; i < menu_link.length; i++) {
+        var clicked = menu_link[i]
+        clicked.addEventListener("click", function () {
+            menu_link = document.querySelectorAll("li");
+            for (i = 0; i < menu_link.length; i++) {
+                menu_link[i].classList.remove("lg:border-t-4", "lg:border-white");
+            }
+            this.classList.add("lg:border-t-4", "lg:border-white");
+
+        });
+    }
+</script>
+<script>
+    const menubtn = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+    menubtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    })
+</script>
+</body>
+</html>

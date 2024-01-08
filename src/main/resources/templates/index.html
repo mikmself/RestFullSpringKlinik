@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media (min-width: 768px) {
+            .custom {
+                box-shadow: 4px 4px 8px #ddc1a0,
+                -4px -4px 8px #f7e5cc;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="">
+    <div class="flex flex-wrap items-center justify-between py-4">
+        <div class="pl-9">
+            <h1 class="font-bold text-3xl text-gray-700">
+                Klinik App
+            </h1>
+        </div>
+        <div class="p-4 lg:hidden" id="menu-button">
+            <img class="w-7 h-7" src="/static_files/svgs5/bars.svg" alt="menu">
+        </div>
+        <div class="hidden w-screen px-5 transition-all duration-700 bg-gray-700 lg:rounded-l-full lg:w-2/3 lg:block"
+             id="menu">
+            <div class="w-full lg:w-auto">
+                <ul class="items-center justify-between text-lg text-center text-white md:flex">
+                    <li class="p-3 py-4 font-bold"><a href="/">Home</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/dokter">Dokter</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/pasien">Pasien</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/jadwal-praktek">Jadwal Praktek</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/pendaftaran">Pendaftaran</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/obat">Obat</a></li>
+                    <li class="p-3 py-4 font-bold"><a href="/rekam-medis">Rekam Medis</a></li>
+                    <div class="flex justify-center ">
+                        <div class="flex items-center m-1 bg-white rounded-xl">
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<main class="mx-auto max-w-screen-md px-4 py-8" style="margin-top: 2cm">
+    <h2 class="text-3xl font-bold mb-4">Selamat Datang di Aplikasi Klinik</h2>
+    <p class="text-lg text-gray-700 mb-6">
+        Selamat datang di Aplikasi Klinik, tempat Anda dapat dengan mudah mengelola jadwal praktek dokter, pendaftaran pasien, dan rekam medis. Kami menyediakan layanan kesehatan terbaik untuk memastikan kenyamanan dan kebutuhan kesehatan Anda terpenuhi. Jadwalkan praktek, lihat jadwal, dan kelola informasi pasien dengan mudah melalui aplikasi kami.
+    </p>
+    <a href="/jadwal-praktek" class="inline-block bg-gray-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-all duration-200 hover:bg-blue-700">Lihat Jadwal Praktek</a>
+</main>
+<script>
+    var menu_link = document.querySelectorAll("li");
+
+    for (i = 0; i < menu_link.length; i++) {
+        var clicked = menu_link[i]
+        clicked.addEventListener("click", function () {
+            menu_link = document.querySelectorAll("li");
+            for (i = 0; i < menu_link.length; i++) {
+                menu_link[i].classList.remove("lg:border-t-4", "lg:border-white");
+            }
+            this.classList.add("lg:border-t-4", "lg:border-white");
+
+        });
+    }
+</script>
+<script>
+    const menubtn = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+    menubtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    })
+</script>
+</body>
+</html>
